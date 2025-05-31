@@ -26,9 +26,11 @@ jobs:
         brew install googletest
 
     - name: Configure CMake
-      # Создаем директорию build, если она не существует, и запускаем CMake
+      # Удаляем старую директорию build, если она существует,
+      # затем создаем новую и запускаем CMake.
       run: |
-        mkdir -p build
+        rm -rf build # Удаляем директорию build и все её содержимое
+        mkdir build  # Создаем чистую директорию build
         cd build
         cmake ..
 
