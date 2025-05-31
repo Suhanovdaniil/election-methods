@@ -1,0 +1,45 @@
+name: C++ Election Methods CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build-and-test:
+    runs-on: macos-latest # Используем последнюю версию macOS, чтобы имитировать твою среду
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4 # Используем последнюю версию action для клонирования репозитория
+
+    - name: Install dependencies (Homebrew - CMake & Googletest)
+      # На runner'ах macOS, Homebrew обычно уже установлен.
+      # Мы просто устанавливаем нужные пакеты.
+      run: |
+        echo "Installing CMake..."
+        brew install cmake
+        echo "Installing Googletest..."
+        brew install googletest
+
+    - name: Configure CMake
+      # Создаем директорию build и запускаем CMake
+      run: |
+        mkdir build
+        cd build
+        cmake ..
+
+    - name: Build project
+      # Собираем проект, используя make (сгенерированный CMake)
+      run: |
+        cd build
+        make
+
+    - name: Run tests
+      # Запускаем исполняемый файл тестов
+      run: |
+        cd build
+        ./election_tests
