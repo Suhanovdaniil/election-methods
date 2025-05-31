@@ -1,0 +1,4 @@
+/Users/daniilsuhanov/election_project/build/CMakeFiles/election_app.dir
+/Users/daniilsuhanov/election_project/build/CMakeFiles/election_tests.dir
+/Users/daniilsuhanov/election_project/build/CMakeFiles/edit_cache.dir
+/Users/daniilsuhanov/election_project/build/CMakeFiles/rebuild_cache.dir
